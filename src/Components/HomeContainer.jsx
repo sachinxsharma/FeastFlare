@@ -31,12 +31,9 @@ const HomeContainer = () => {
         </p>
 
         <p className="text-base text-textColor text-center md:text-left md:w-[80%]">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima velit
-          eaque fugit distinctio est nam voluptatum architecto, porro iusto
-          deserunt recusandae ipsa minus eos sunt, dolores illo repellat facere
-          suscipit!
+         
         </p>
-
+        Indulge in the ultimate culinary experience with our food delivery website! Enjoy a diverse menu and savor the fastest delivery service. Elevate your dining moments with a seamless ordering process and prompt doorstep delivery. Your cravings met swiftly – because great food should arrive as fast as your appetite.
         <button
           type="button"
           className="bg-gradient-to-br from-orange-400 to-orange-500 w-full md:w-auto px-4 py-2  rounded-lg hover:shadow-lg transition-all ease-in-out duration-100"

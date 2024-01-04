@@ -16,14 +16,15 @@ const App = () => {
         type: actionType.SET_FOOD_ITEMS,
         foodItems: data,
       });
+      console.log(data)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }, [dispatch]);
+  });
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, []);
 
   return (
     <AnimatePresence mode="wait" initial={false} presenceAffectsLayout>

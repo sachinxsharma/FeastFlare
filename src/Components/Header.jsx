@@ -17,7 +17,7 @@ const Header = () => {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
-  const [{user},dispatch] = useStateValue();
+  const [{user,cartShow,cartItems},dispatch] = useStateValue();
   const [isMenu, setIsMenu] = useState(false)
 
      const login = async () => {
@@ -40,6 +40,13 @@ const Header = () => {
       dispatch({
         type : actionType.SET_USER,
         user : null
+      });
+     };
+
+     const showCart = () => {
+      dispatch({
+        type :actionType.SET_CART_SHOW,
+        cartShow: !cartShow,
       });
      }
       
@@ -67,11 +74,13 @@ const Header = () => {
         </motion.ul>
 
 
-        <div className="relative flex item-center justify-center">
+        <div className="relative flex item-center justify-center" onClick={showCart}>
           <MdShoppingBasket className="text-textColor text-2x1 w-6 h-6 cursor-pointer"/>
+        {cartItems && cartItems.length > 0 && (
           <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-cartNumBg flex item-center justify-center">
-            <p className="text-xs text-white font-semibold">2</p>
+            <p className="text-xs text-white font-semibold">{cartItems.length}</p>
           </div>
+        )}
         </div>
 
         <div className="relative">
@@ -113,11 +122,13 @@ const Header = () => {
     {/* Mobile View */}
     <div className="flex item-center justify-between md:hidden w-full h-full">
 
-        <div className="relative flex item-center justify-center">
+        <div className="relative flex item-center justify-center" onClick={showCart}>
           <MdShoppingBasket className="text-textColor text-2x1 w-6 h-6 cursor-pointer"/>
+          {cartItems && cartItems.length > 0 && (
           <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-cartNumBg flex item-center justify-center">
-            <p className="text-xs text-white font-semibold">2</p>
+            <p className="text-xs text-white font-semibold">{cartItems.length}</p>
           </div>
+        )}
         </div>
 
         <Link to={'/'} className="flex items-center gap-2">

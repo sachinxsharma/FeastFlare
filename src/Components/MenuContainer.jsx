@@ -8,7 +8,7 @@ import { useStateValue } from "../context/StateProvider";
 const MenuContainer = () => {
   const [filter, setFilter] = useState("chicken");
 
-  const [{ foodItems }] = useStateValue();
+  const [{ foodItems },dispatch] = useStateValue();
 
   return (
     <section className="w-full my-6" id="menu">
@@ -55,12 +55,8 @@ const MenuContainer = () => {
               </motion.div>
             ))}
         </div>
-
-        <div className="w-full">
-          <RowContainer
-            flag={false}
-            data={foodItems?.filter(n => n.category === filter)}
-          />
+        <div className="w-full ">
+          <RowContainer flag={false} data={foodItems?.filter(n => n.category == filter)}  />
         </div>
       </div>
     </section>
