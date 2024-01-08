@@ -7,11 +7,16 @@ import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
 import EmptyCart from "./img/emptyCart.svg";
 import CartItem from "./CartItem";
+import PayPal from "./PayPal";
+
+// const [checkout, setCheckOut] = useState(false);
+
 
 const CartContainer = () => {
   const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
   const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
+  const [checkout, setCheckOut] = useState(false);
 
   const showCart = () => {
     dispatch({
@@ -19,6 +24,8 @@ const CartContainer = () => {
       cartShow: !cartShow,
     });
   };
+
+  const totalamount = tot + 2.5;
 
   useEffect(() => {
     let totalPrice = cartItems.reduce(function (accumulator, item) {
@@ -105,14 +112,21 @@ const CartContainer = () => {
               >
                 Check Out
               </motion.button>
-            ) : (
-              <motion.button
+            ) : (    
+             checkout ? (
+                <PayPal />
+             ) : (
+
+              <motion.button onClick={()=>{
+                setCheckOut(true);
+              }}
                 whileTap={{ scale: 0.8 }}
                 type="button"
                 className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg"
               >
                 Login to check out
               </motion.button>
+             )
             )}
           </div>
         </div>
