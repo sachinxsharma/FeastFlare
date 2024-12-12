@@ -25,7 +25,7 @@ const CartContainer = () => {
     });
   };
 
-  const totalamount = tot + 2.5;
+
 
   useEffect(() => {
     let totalPrice = cartItems.reduce(function (accumulator, item) {
